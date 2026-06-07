@@ -1,581 +1,199 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Patricija &amp; Lovro — 24. travnja 2027.</title>
+<title>Save the Date — Patricija &amp; Lovro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-
+*{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --cream:#f7eee1;
-  --cream2:#efe2cf;
-  --paper:#fbf6ec;
-  --bordo:#6e1f2c;
-  --bordo-deep:#54141f;
-  --bordo-soft:#8c3140;
-  --olive:#7c855a;
-  --olive-deep:#5a6240;
-  --olive-light:#a4ad84;
-  --gold:#a8842f;
-  --gold-light:#c7a565;
-  --ink:#3b2c25;
-  --muted:#7a6b5e;
+  --cream:#f7eee1;--paper:#fbf6ec;--bordo:#6e1f2c;--bordo-soft:#8c3140;
+  --olive:#7c855a;--olive-deep:#5a6240;--gold:#a8842f;--gold-light:#c7a565;
+  --ink:#3b2c25;--muted:#7a6b5e;
 }
-
-html{ scroll-behavior:smooth; overflow-x:hidden; }
+html,body{height:100%;overflow:hidden;}
 body{
-  font-family:'Inter',sans-serif;
-  background:var(--cream);
-  color:var(--ink);
-  overflow-x:hidden;
-  position:relative;
+  font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);
+  display:flex;align-items:center;justify-content:center;position:relative;
 }
-body::before{
-  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
-  background:
-    radial-gradient(70% 50% at 12% 6%, rgba(124,133,90,.10), transparent 60%),
-    radial-gradient(60% 45% at 88% 22%, rgba(110,31,44,.07), transparent 60%),
-    radial-gradient(60% 55% at 50% 102%, rgba(168,132,47,.08), transparent 60%);
-}
+body.intro-active .card>*:not(.frame){animation:none;opacity:0;}
+body.intro-active .floral{opacity:0;}
 
-
-
-/* ───────── FLORAL BACKGROUND DETAILS
-   Cvijeće ostaje samo kao suptilan pozadinski dizajnerski sloj.
-   Nema cvjetova kao sadržajnih elemenata i nema dodatnih dekoracija unutar sekcija. ───────── */
-body::after{
-  content:'';
-  position:fixed;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  background-image:
-    url('assets/1.svg'),
-    url('assets/2.svg'),
-    url('assets/3.svg');
-  background-repeat:no-repeat;
-  background-position:
-    left -20rem top -16rem,
-    right -23rem top 36vh,
-    left -18rem bottom -22rem;
-  background-size:
-    min(58vw,760px) auto,
-    min(52vw,700px) auto,
-    min(48vw,650px) auto;
-  opacity:.105;
-  mix-blend-mode:multiply;
-}
-
-@media(max-width:760px){
-  body::after{
-    background-position:
-      left -18rem top -12rem,
-      right -19rem top 44vh,
-      left -16rem bottom -14rem;
-    background-size:
-      560px auto,
-      540px auto,
-      500px auto;
-    opacity:.075;
-  }
-}
-
-/* ───────── CONTENT ───────── */
-.content{ position:relative; z-index:3; }
-
-/* ───────── INTRO PRELOADER ───────── */
+/* Intro preloader */
 #intro{
-  position:fixed; inset:0; z-index:500;
+  position:fixed;inset:0;z-index:500;
   background:var(--cream);
-  display:flex; align-items:center; justify-content:center;
-  transition:opacity 1s ease, visibility 1s;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity 1s ease,visibility 1s;
 }
-#intro.hidden{ opacity:0; visibility:hidden; pointer-events:none; }
-body.intro-active{ overflow:hidden; }
-
+#intro.hidden{opacity:0;visibility:hidden;pointer-events:none;}
 .intro-monogram{
-  width:210px; height:210px;
-  border-radius:50%;
+  width:210px;height:210px;border-radius:50%;
   border:1px solid rgba(168,132,47,.48);
-  display:flex; align-items:center; justify-content:center;
-  opacity:0;
-  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;position:relative;
   animation:introIn .95s .5s cubic-bezier(.16,1,.3,1) forwards;
 }
 .intro-monogram::before{
-  content:'';
-  position:absolute;
-  inset:9px;
-  border-radius:50%;
-  border:1px solid rgba(168,132,47,.18);
-  pointer-events:none;
+  content:'';position:absolute;inset:9px;border-radius:50%;
+  border:1px solid rgba(168,132,47,.18);pointer-events:none;
 }
 .intro-monogram span{
-  font-family:'Playfair Display',serif;
-  font-style:italic;
-  font-size:2.05rem;
-  color:var(--bordo);
-  letter-spacing:.14em;
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:2.05rem;color:var(--bordo);letter-spacing:.14em;
 }
-.intro-monogram em{
-  font-style:italic;
-  color:var(--gold);
-}
+.intro-monogram em{font-style:italic;color:var(--gold);}
 @keyframes introIn{
-  from{ opacity:0; transform:scale(.88); }
-  to{ opacity:1; transform:scale(1); }
+  from{opacity:0;transform:scale(.88);}
+  to{opacity:1;transform:scale(1);}
 }
 
-/* NAV */
-nav{
-  position:fixed; top:0; width:100%; z-index:50;
-  display:flex; justify-content:center; align-items:center;
-  padding:1.2rem 2rem; transition:background .4s, box-shadow .4s, backdrop-filter .4s;
-}
-nav.scrolled{ background:rgba(247,238,225,.82); backdrop-filter:blur(10px); box-shadow:0 1px 0 rgba(110,31,44,.14); }
-nav .brand{ font-family:'Playfair Display',serif; font-style:italic; font-size:1.25rem; color:var(--bordo); letter-spacing:.06em; }
-nav .brand em{ font-style:italic; color:var(--gold); }
+/* Corner florals */
+.floral{position:fixed;pointer-events:none;mix-blend-mode:multiply;opacity:.23;z-index:1;transition:opacity 1.2s ease;}
+.floral.tl{top:-8rem;left:-8rem;width:min(42vw,480px);transform:rotate(0deg);}
+.floral.tr{top:-6rem;right:-10rem;width:min(38vw,440px);transform:scaleX(-1);}
+.floral.bl{bottom:-10rem;left:-7rem;width:min(36vw,420px);transform:rotate(180deg);}
+.floral.br{bottom:-8rem;right:-8rem;width:min(40vw,460px);transform:rotate(180deg) scaleX(-1);}
 
-/* HERO (animates on load) */
-.hero{
-  min-height:100vh; display:flex; flex-direction:column;
-  justify-content:center; align-items:center; text-align:center;
-  padding:7rem 2rem 7rem; position:relative;
-}
-.hero > *{ width:100%; text-align:center; }
-.hero .rings{ width:124px; height:auto; margin:0 auto 1.8rem; display:block; mix-blend-mode:multiply; opacity:0; animation:ringsRise 1.2s 1.9s forwards; }
-@keyframes ringsRise{ from{opacity:0; transform:translateY(34px);} to{opacity:.48; transform:translateY(0);} }
-.hero .pre{ font-size:.78rem; letter-spacing:.46em; text-indent:.46em; text-transform:uppercase; color:var(--bordo-soft); margin-bottom:1.8rem; opacity:0; animation:rise 1s 2.1s forwards; }
-.hero h1{
-  font-family:'Playfair Display',serif; font-weight:500;
-  font-size:clamp(3.3rem,8.5vw,7.6rem); line-height:1; color:var(--bordo); letter-spacing:.01em;
-  opacity:0; animation:rise 1.1s 2.3s forwards;
-}
-.hero .amp{
-  display:block; font-family:'Playfair Display',serif; font-style:italic; font-weight:400;
-  font-size:clamp(1.4rem,3.5vw,3.2rem); color:var(--gold); text-align:center;
-  margin:0 auto 1.2rem; opacity:0; animation:rise 1s 2.4s forwards;
-}
-.hero .date{ margin-top:1.8rem; font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.05rem,2.5vw,1.65rem); color:var(--olive-deep); opacity:0; animation:rise 1s 2.55s forwards; }
-.hero .place{ margin-top:.65rem; font-size:.76rem; letter-spacing:.3em; text-indent:.3em; text-transform:uppercase; color:var(--muted); opacity:0; animation:rise 1s 2.75s forwards; }
-@keyframes rise{ from{opacity:0; transform:translateY(34px);} to{opacity:1; transform:translateY(0);} }
-
-.scroll-cue{ position:absolute; bottom:2.4rem; left:0; width:100%; display:flex; flex-direction:column; align-items:center; gap:.55rem; opacity:0; animation:rise 1s 3.15s forwards; text-indent:0; }
-.scroll-cue span{ font-size:.6rem; letter-spacing:.32em; text-transform:uppercase; color:var(--muted); }
-.scroll-cue .stem{ width:1px; height:46px; background:rgba(110,31,44,.4); position:relative; overflow:hidden; }
-.scroll-cue .stem::after{ content:''; position:absolute; top:0; left:0; width:100%; height:42%; background:var(--bordo); animation:drip 1.9s ease-in-out infinite; }
-@keyframes drip{ 0%{transform:translateY(-100%);} 100%{transform:translateY(250%);} }
-
-/* ───────── REVEAL SYSTEM (whole page flows in) ───────── */
-[data-reveal]{
-  opacity:0; transform:translateY(38px);
-  transition:opacity 1s cubic-bezier(.16,1,.3,1), transform 1.05s cubic-bezier(.16,1,.3,1), filter 1s ease;
-  will-change:opacity, transform;
-}
-[data-reveal="left"]{ transform:translateX(-52px); }
-[data-reveal="right"]{ transform:translateX(52px); }
-[data-reveal="scale"]{ transform:scale(.9); }
-[data-reveal="blur"]{ transform:translateY(26px); filter:blur(12px); }
-[data-reveal].in{ opacity:1; transform:none; filter:none; }
-
-/* COUNTDOWN */
-.cd-sec{ padding:5rem 2rem 6rem; text-align:center; }
-.cd-sec .title{ font-family:'Playfair Display',serif; font-style:italic; font-size:1.55rem; color:var(--bordo-soft); margin-bottom:2.6rem; }
-.cd-wrap{ display:flex; justify-content:center; gap:1.3rem; flex-wrap:wrap; }
-.cd{ position:relative; overflow:hidden; width:132px; padding:1.7rem .5rem; background:rgba(251,246,236,.66); border:1px solid rgba(124,133,90,.28); border-radius:6px; backdrop-filter:blur(4px); }
-.cd::after{ content:''; position:absolute; top:-30px; right:-30px; width:92px; height:92px; border-radius:50%; background:radial-gradient(circle at 32% 32%, rgba(168,132,47,.14), transparent 70%); pointer-events:none; }
-.cd .n{ font-family:'Playfair Display',serif; font-size:2.7rem; line-height:1; color:var(--bordo); }
-.cd .l{ font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; color:var(--olive-deep); margin-top:.55rem; }
-
-/* HEADING */
-.heading{ text-align:center; margin-bottom:3.4rem; }
-.heading .kicker{ font-size:.72rem; letter-spacing:.36em; text-transform:uppercase; color:var(--gold); margin-bottom:.85rem; }
-.heading h2{ font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(2rem,4.6vw,3.2rem); color:var(--bordo); }
-.heading .rule{ width:58px; height:1px; margin:1.1rem auto 0; background:var(--gold); position:relative; }
-.heading .rule::after{ content:'❧'; position:absolute; left:50%; top:50%; transform:translate(-50%,-52%); color:var(--bordo-soft); font-size:.9rem; background:var(--cream); padding:0 .4rem; }
-
-/* TIMELINE / RASPORED */
-.timeline{ max-width:780px; margin:0 auto; padding:1rem 2rem 6rem; position:relative; }
-.timeline::before{ content:''; position:absolute; left:50%; top:6px; bottom:74px; width:1px; background:linear-gradient(var(--olive-light),var(--bordo-soft)); transform:translateX(-50%); }
-.t-row{ display:grid; grid-template-columns:1fr 56px 1fr; align-items:center; margin-bottom:2.8rem; }
-.t-card{ position:relative; overflow:hidden; background:var(--paper); border:1px solid rgba(124,133,90,.26); border-radius:8px; padding:1.7rem 1.9rem; box-shadow:0 18px 44px -30px rgba(90,98,64,.7); }
-.t-card::after{ content:''; position:absolute; bottom:-34px; right:-34px; width:104px; height:104px; border-radius:50%; background:radial-gradient(circle at 34% 34%, rgba(124,133,90,.12), transparent 70%); pointer-events:none; }
-.t-card h3{ font-family:'Playfair Display',serif; font-weight:500; font-size:1.3rem; margin-bottom:.4rem; color:var(--bordo); }
-.t-card p{ font-weight:300; font-size:.9rem; line-height:1.65; color:var(--muted); }
-.t-time{ grid-column:2; justify-self:center; width:62px; height:62px; border-radius:50%; background:var(--cream); border:1px solid var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:.88rem; color:var(--bordo); z-index:2; box-shadow:0 0 0 6px var(--cream); }
-.t-row.left .t-card{ grid-column:1; }
-.t-row.left .t-spacer{ grid-column:3; }
-.t-row.right .t-card{ grid-column:3; }
-.t-row.right .t-spacer{ grid-column:1; }
-
-/* PHOTOS (staggered, asymmetric heights) */
-.photos{ display:grid; grid-template-columns:repeat(3,1fr); gap:.7rem; max-width:1060px; margin:0 auto 6rem; padding:0 2rem; align-items:start; }
-.pslot{ aspect-ratio:3/4; border-radius:8px; background:linear-gradient(155deg,var(--olive-light),var(--bordo-soft)); display:flex; align-items:center; justify-content:center; color:rgba(251,246,236,.92); font-size:.74rem; letter-spacing:.14em; overflow:hidden; }
-.pslot:nth-child(1){ margin-top:2.4rem; }
-.pslot:nth-child(3){ margin-top:3.6rem; }
-
-/* DETAILS */
-.dgrid{ max-width:960px; margin:0 auto 6rem; padding:0 2rem; display:grid; grid-template-columns:repeat(2,1fr); gap:1.1rem; }
-.dcard{ background:var(--paper); border:1px solid rgba(124,133,90,.24); border-radius:8px; padding:2.1rem; position:relative; overflow:hidden; }
-.dcard::before{ content:''; position:absolute; top:0; left:0; width:100%; height:2px; background:linear-gradient(90deg,var(--gold),var(--bordo)); transform:scaleX(0); transform-origin:left; transition:transform .9s .25s cubic-bezier(.16,1,.3,1); }
-.dcard.in::before{ transform:scaleX(1); }
-.dcard::after{ content:''; position:absolute; bottom:-36px; right:-36px; width:108px; height:108px; border-radius:50%; background:radial-gradient(circle at 34% 34%, rgba(168,132,47,.10), transparent 70%); pointer-events:none; }
-.dcard h3{ font-family:'Playfair Display',serif; font-weight:500; font-size:1.2rem; margin-bottom:.5rem; color:var(--bordo); }
-.dcard .lbl{ font-size:.66rem; letter-spacing:.26em; text-transform:uppercase; color:var(--gold); margin-bottom:.7rem; }
-.dcard p{ font-weight:300; font-size:.88rem; line-height:1.65; color:var(--muted); }
-
-/* RSVP */
-.rsvp{ text-align:center; padding:7rem 2rem 8rem; position:relative; }
-.rsvp h2{ font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(2.3rem,5vw,3.7rem); color:var(--bordo); margin-bottom:1rem; }
-.rsvp h2 em{ font-style:italic; color:var(--gold); }
-.rsvp p{ font-weight:300; font-size:1.02rem; color:var(--muted); margin-bottom:2.5rem; }
-.rsvp-btn{ display:inline-block; padding:1.1rem 3.4rem; border-radius:2px; background:var(--bordo); color:var(--paper); text-decoration:none; font-size:.78rem; letter-spacing:.26em; text-transform:uppercase; font-weight:500; position:relative; overflow:hidden; box-shadow:0 16px 36px -18px rgba(110,31,44,.8); }
-.rsvp-btn span{ position:relative; z-index:1; }
-.rsvp-btn::after{ content:''; position:absolute; inset:0; background:var(--bordo-deep); transform:translateX(-101%); transition:transform .45s cubic-bezier(.16,1,.3,1); }
-.rsvp-btn:hover::after{ transform:translateX(0); }
-
-/* FOOTER */
-footer{ text-align:center; padding:5rem 2rem 4.5rem; position:relative; }
-footer .fn{ font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(2.2rem,5vw,3.4rem); color:var(--bordo); line-height:1.05; }
-footer .fn .amp{ font-style:italic; font-weight:400; color:var(--gold); }
-footer .fmeta{ font-family:'Playfair Display',serif; font-style:italic; font-size:1.05rem; color:var(--olive-deep); margin-top:1.2rem; }
-footer .fline{ width:46px; height:1px; background:var(--gold); margin:1.6rem auto; opacity:.7; }
-footer .fheart{ display:block; margin-top:1.6rem; font-size:.74rem; font-style:italic; font-family:'Playfair Display',serif; color:var(--bordo-soft); letter-spacing:.04em; text-indent:.04em; }
-
-/* RESPONSIVE */
-@media(max-width:760px){
-  nav{
-    padding:1rem 1.15rem;
-  }
-
-  .hero{
-    min-height:92vh;
-    padding:6.4rem 1.15rem 4.2rem;
-  }
-  .hero .rings{
-    width:100px;
-    margin-bottom:1.5rem;
-  }
-  .hero .pre{
-    max-width:270px;
-    margin:0 auto 1.5rem;
-    font-size:.68rem;
-    letter-spacing:.28em;
-    text-indent:.28em;
-    line-height:1.75;
-  }
-  .hero h1{
-    font-size:clamp(3.2rem,18vw,4.9rem);
-    line-height:.98;
-  }
-  .hero .date{
-    margin-top:1.5rem;
-    font-size:1.18rem;
-  }
-  .hero .place{
-    max-width:280px;
-    margin:.55rem auto 0;
-    font-size:.66rem;
-    letter-spacing:.21em;
-    text-indent:.21em;
-    line-height:1.7;
-  }
-  .scroll-cue{
-    bottom:1.35rem;
-  }
-
-  .cd-sec{
-    padding:3.7rem 1.1rem 4.6rem;
-  }
-  .cd-sec .title{
-    font-size:1.28rem;
-    margin-bottom:1.8rem;
-  }
-  .cd-wrap{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:.75rem;
-    max-width:330px;
-    margin:0 auto;
-  }
-  .cd{
-    width:auto;
-    padding:1.25rem .45rem;
-  }
-  .cd .n{
-    font-size:2.25rem;
-  }
-  .cd .l{
-    font-size:.55rem;
-    letter-spacing:.2em;
-  }
-
-  .photos{
-    grid-template-columns:1fr;
-    gap:.9rem;
-    max-width:380px;
-    margin:0 auto 4.5rem;
-    padding:0 1.15rem;
-  }
-  .pslot{
-    aspect-ratio:3/4;
-    border-radius:9px;
-    font-size:.74rem;
-    letter-spacing:.12em;
-    text-align:center;
-  }
-  .pslot:nth-child(1),
-  .pslot:nth-child(3){ margin-top:0; }
-
-  .heading{
-    margin-bottom:2.35rem;
-    padding:0 1.15rem;
-  }
-  .heading .kicker{
-    font-size:.62rem;
-    letter-spacing:.25em;
-  }
-  .heading h2{
-    font-size:2.2rem;
-  }
-
-  .timeline{
-    padding:0 1.1rem 4.3rem;
-  }
-  .timeline::before{ display:none; }
-  .t-row{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    margin-bottom:1.6rem;
-  }
-  .t-time{
-    order:1;
-    width:56px; height:56px;
-    font-size:.8rem;
-    margin-bottom:.8rem;
-    box-shadow:none;
-  }
-  .t-card{
-    order:2;
-    width:100%;
-    padding:1.3rem 1.3rem;
-    border-radius:7px;
-    text-align:center;
-  }
-  .t-row .t-spacer{ display:none; }
-  .t-card h3{
-    font-size:1.12rem;
-  }
-  .t-card p{
-    font-size:.84rem;
-    line-height:1.58;
-  }
-
-  .dgrid{
-    grid-template-columns:1fr;
-    gap:.85rem;
-    margin-bottom:4.6rem;
-    padding:0 1.1rem;
-  }
-  .dcard{
-    padding:1.45rem 1.35rem;
-  }
-
-  .rsvp{
-    padding:5.2rem 1.15rem 5.8rem;
-  }
-  .rsvp h2{
-    font-size:2.3rem;
-    line-height:1.08;
-  }
-  .rsvp p{
-    max-width:300px;
-    margin:0 auto 2rem;
-    font-size:.95rem;
-    line-height:1.65;
-  }
-  .rsvp-btn{
-    width:100%;
-    max-width:300px;
-    padding:1rem 1.2rem;
-    font-size:.7rem;
-    letter-spacing:.2em;
-  }
-
-  footer{
-    padding:2.8rem 1.1rem 3.2rem;
-  }
-  footer p{
-    font-size:.64rem;
-    line-height:1.6;
-    letter-spacing:.13em;
-  }
-
-  [data-reveal="left"],
-  [data-reveal="right"]{
-    transform:translateY(32px);
-  }
+/* Subtle background wash */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 15%, rgba(124,133,90,.08), transparent),
+    radial-gradient(ellipse 60% 50% at 85% 85%, rgba(168,132,47,.07), transparent),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(110,31,44,.04), transparent);
 }
 
-@media(max-width:390px){
-  .hero h1{
-    font-size:3rem;
-  }
-  .cd-wrap{
-    max-width:300px;
-  }
-  .t-card{
-    padding:1.05rem 1rem;
-  }
+.card{
+  position:relative;z-index:10;text-align:center;padding:4rem 3rem;
+  max-width:560px;width:90vw;
+}
+
+/* Decorative frame */
+.frame{
+  position:absolute;inset:0;pointer-events:none;
+}
+.frame::before,.frame::after{
+  content:'';position:absolute;border:1px solid var(--gold);opacity:.35;
+}
+.frame::before{inset:0;border-radius:2px;}
+.frame::after{inset:10px;border-radius:2px;}
+
+/* Corner ornaments on frame */
+.corner{position:absolute;width:28px;height:28px;opacity:.5;}
+.corner::before,.corner::after{content:'';position:absolute;background:var(--gold);}
+.corner::before{width:100%;height:1px;top:50%;}
+.corner::after{width:1px;height:100%;left:50%;}
+.corner.tl{top:16px;left:16px;} .corner.tr{top:16px;right:16px;}
+.corner.bl{bottom:16px;left:16px;} .corner.br{bottom:16px;right:16px;}
+
+.kicker{
+  font-family:'Playfair Display',serif;font-style:italic;font-weight:400;
+  font-size:clamp(1.1rem,2.8vw,1.6rem);letter-spacing:.12em;
+  color:var(--bordo-soft);margin-bottom:2.4rem;
+}
+.names{
+  font-family:'Playfair Display',serif;font-weight:500;
+  font-size:clamp(2.8rem,7vw,4.8rem);line-height:1;color:var(--bordo);
+}
+.amp{
+  display:block;font-family:'Playfair Display',serif;font-style:italic;
+  font-weight:400;font-size:clamp(1.2rem,3vw,2rem);color:var(--gold);
+  margin:1.2rem auto 0.4rem;
+}
+.rule-wrap{display:flex;align-items:center;justify-content:center;gap:.8rem;margin:2rem auto;}
+.rule-wrap .line{width:38px;height:1px;background:var(--gold);opacity:.45;}
+.rule-wrap img{width:44px;height:auto;mix-blend-mode:multiply;opacity:.7;}
+.std{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(.9rem,2.2vw,1.3rem);color:var(--bordo-soft);
+  letter-spacing:.06em;margin-bottom:1.8rem;
+}
+.date{
+  font-family:'Playfair Display',serif;font-weight:500;
+  font-size:clamp(1.6rem,4vw,2.8rem);color:var(--bordo);margin-bottom:.6rem;
+}
+.venue{
+  font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* Animations */
+.card>*:not(.frame){opacity:0;transform:translateY(20px);animation:fadeUp .9s forwards;}
+.card>.kicker{animation-delay:.3s;}
+.card>.names{animation-delay:.5s;}
+.card>.amp{animation-delay:.65s;}
+.card>.amp~.names{animation-delay:.8s;}
+.card>.rule-wrap{animation-delay:.95s;}
+.card>.std{animation-delay:1.1s;}
+.card>.date{animation-delay:1.25s;}
+.card>.venue{animation-delay:1.4s;}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:500px){
+  .card{padding:3rem 2rem;}
+  .floral.tl{top:-6rem;left:-6rem;width:260px;}
+  .floral.tr{top:-5rem;right:-7rem;width:240px;}
+  .floral.bl{bottom:-7rem;left:-5rem;width:230px;}
+  .floral.br{bottom:-6rem;right:-6rem;width:250px;}
 }
 </style>
 </head>
 <body>
 
-<!-- ════════ INTRO PRELOADER ════════ -->
 <div id="intro">
   <div class="intro-monogram">
     <span>P <em>&amp;</em> L</span>
   </div>
 </div>
 
-<!-- ════════ CONTENT ════════ -->
-<div class="content">
+<img class="floral tl" src="assets/1.svg" alt="">
+<img class="floral tr" src="assets/2.svg" alt="">
+<img class="floral bl" src="assets/3.svg" alt="">
+<img class="floral br" src="assets/1.svg" alt="">
 
-  <nav id="nav">
-    <span class="brand">P <em>&amp;</em> L</span>
-  </nav>
-
-  <section class="hero">
-    <img class="rings" src="assets/4.svg" alt="Vjenčano prstenje">
-    <p class="pre">Pozivamo vas da slavite s nama</p>
-    <h1>Patricija</h1>
-    <span class="amp" style="padding-top: 0.7rem">&amp;</span>
-    <h1 style="margin-top: -1.1rem">Lovro</h1>
-    <p class="date">24. travnja 2027.</p>
-    <p class="place">Imanje Trajbar · Zaprešić</p>
-    <div class="scroll-cue"><span>Listaj</span><div class="stem"></div></div>
-  </section>
-
-  <section class="cd-sec">
-    <p class="title" data-reveal>Odbrojavamo do našeg „da"</p>
-    <div class="cd-wrap">
-      <div class="cd" data-reveal data-d="0"><div class="n" id="days">---</div><div class="l">Dana</div></div>
-      <div class="cd" data-reveal data-d=".08"><div class="n" id="hours">--</div><div class="l">Sati</div></div>
-      <div class="cd" data-reveal data-d=".16"><div class="n" id="minutes">--</div><div class="l">Minuta</div></div>
-      <div class="cd" data-reveal data-d=".24"><div class="n" id="seconds">--</div><div class="l">Sekundi</div></div>
-    </div>
-  </section>
-
-  <div class="photos">
-    <div class="pslot" data-reveal="scale" data-d="0">Fotografija 1</div>
-    <div class="pslot" data-reveal="scale" data-d=".12">Fotografija 2</div>
-    <div class="pslot" data-reveal="scale" data-d=".24">Fotografija 3</div>
+<div class="card">
+  <div class="frame">
+    <div class="corner tl"></div><div class="corner tr"></div>
+    <div class="corner bl"></div><div class="corner br"></div>
   </div>
-
-  <section id="raspored">
-    <div class="heading">
-      <p class="kicker" data-reveal data-d="0">24. travnja 2027.</p>
-      <h2 data-reveal data-d=".08">Raspored dana</h2>
-      <div class="rule" data-reveal data-d=".16"></div>
-    </div>
-    <div class="timeline">
-      <div class="t-row left">
-        <div class="t-card" data-reveal="left"><h3>Dolazak gostiju</h3><p>Dočekujemo vas na Imanju Trajbar uz piće dobrodošlice.</p></div>
-        <div class="t-time">16:00</div><div class="t-spacer"></div>
-      </div>
-      <div class="t-row right">
-        <div class="t-spacer"></div><div class="t-time">17:00</div>
-        <div class="t-card" data-reveal="right"><h3>Ceremonija</h3><p>Izricanje zavjeta na otvorenom, u vrtu imanja.</p></div>
-      </div>
-      <div class="t-row left">
-        <div class="t-card" data-reveal="left"><h3>Koktel &amp; večera</h3><p>Druženje, fotografije i svečana večera.</p></div>
-        <div class="t-time">18:30</div><div class="t-spacer"></div>
-      </div>
-      <div class="t-row right">
-        <div class="t-spacer"></div><div class="t-time">21:00</div>
-        <div class="t-card" data-reveal="right"><h3>Prvi ples &amp; zabava</h3><p>Rezanje torte i ples do ranih jutarnjih sati.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="detalji">
-    <div class="heading">
-      <p class="kicker" data-reveal data-d="0">Dobro je znati</p>
-      <h2 data-reveal data-d=".08">Detalji</h2>
-      <div class="rule" data-reveal data-d=".16"></div>
-    </div>
-    <div class="dgrid">
-      <div class="dcard" data-reveal data-d="0"><div class="lbl">Gdje</div><h3>Lokacija</h3><p>Imanje Trajbar<br>Zaprešić, Hrvatska</p></div>
-      <div class="dcard" data-reveal data-d=".1"><div class="lbl">Odjevni kod</div><h3>Dress code</h3><p>Elegantno svečano. Molimo izbjegavajte bijelu boju.</p></div>
-      <div class="dcard" data-reveal data-d=".05"><div class="lbl">Dolazak</div><h3>Parking</h3><p>Besplatan parking dostupan je u sklopu imanja.</p></div>
-      <div class="dcard" data-reveal data-d=".15"><div class="lbl">Darovi</div><h3>Pokloni</h3><p>Vaša prisutnost nam je najveći dar; novčani dar je dobrodošao.</p></div>
-    </div>
-  </section>
-  <section class="rsvp" id="rsvp">
-    <h2 data-reveal data-d="0">Veselimo se <em>vašem dolasku</em></h2>
-    <p data-reveal data-d=".12">Molimo potvrdite svoj dolazak do 1. ožujka 2027.</p>
-    <a href="#" class="rsvp-btn" data-reveal data-d=".24"><span>Potvrdi dolazak</span></a>
-  </section>
-
-  <footer>
-    <div class="fn" data-reveal data-d=".05">Patricija <span class="amp">&amp;</span> Lovro</div>
-    <div class="fmeta" data-reveal data-d=".1">Jedva čekamo slaviti s vama</div>
-    <div class="fline" data-reveal data-d=".15"></div>
-  </footer>
-
+  <p class="kicker">Save the Date</p>
+  <div class="names" style="">Patricija</div>
+  <div class="amp">&amp;</div>
+  <div class="names">Lovro</div>
+  <div class="rule-wrap"><span class="line"></span><img src="assets/5.svg" alt=""><span class="line"></span></div>
+  <p class="std">Pozivamo vas da slavite s nama</p>
+  <p class="date">24. travnja 2027.</p>
+  <p class="venue">Zagreb</p>
 </div>
 
 <script>
-/* Intro preloader */
 (function(){
   document.body.classList.add('intro-active');
   var intro = document.getElementById('intro');
-  setTimeout(function(){
+  var imgs = document.querySelectorAll('img');
+  var loaded = 0;
+  var minReady = false;
+  var allLoaded = false;
+
+  function dismiss(){
+    if(!minReady || !allLoaded) return;
     intro.classList.add('hidden');
-    setTimeout(function(){
-      intro.remove();
-      document.body.classList.remove('intro-active');
-    }, 1050);
-  }, 2100);
+    document.body.classList.remove('intro-active');
+    setTimeout(function(){ intro.remove(); }, 1050);
+  }
+
+  setTimeout(function(){ minReady = true; dismiss(); }, 2100);
+
+  function check(){ loaded++; if(loaded >= imgs.length){ allLoaded = true; dismiss(); } }
+  imgs.forEach(function(img){
+    if(img.complete) check();
+    else{ img.addEventListener('load', check); img.addEventListener('error', check); }
+  });
+  if(imgs.length === 0){ allLoaded = true; }
 })();
-
-/* Countdown */
-const wedding = new Date('2027-04-24T17:00:00');
-function tick(){
-  const d = wedding - new Date(); if(d<=0) return;
-  days.textContent = Math.floor(d/864e5);
-  hours.textContent = String(Math.floor((d%864e5)/36e5)).padStart(2,'0');
-  minutes.textContent = String(Math.floor((d%36e5)/6e4)).padStart(2,'0');
-  seconds.textContent = String(Math.floor((d%6e4)/1e3)).padStart(2,'0');
-}
-tick(); setInterval(tick,1000);
-
-/* Reveal-on-scroll */
-if('IntersectionObserver' in window){
-  const io = new IntersectionObserver((es)=>{
-    es.forEach(e=>{
-      if(e.isIntersecting){
-        const el = e.target;
-        if(el.dataset.d) el.style.transitionDelay = el.dataset.d + 's';
-        el.classList.add('in');
-        io.unobserve(el);
-      }
-    });
-  },{ threshold:.16, rootMargin:'0px 0px -8% 0px' });
-  document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
-}else{
-  document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('in'));
-}
-
-/* Nav background on scroll */
-addEventListener('scroll',()=>{
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY>40);
-});
 </script>
 </body>
 </html>
