@@ -9,10 +9,9 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  /* Lighter, fresher spring palette */
-  --cream:#faf5ec;--paper:#fdfaf3;--bordo:#7e2334;--bordo-soft:#9c3b4c;
-  --olive:#869065;--olive-deep:#67714a;--gold:#b08f3e;--gold-light:#cfae6c;
-  --ink:#3b2c25;--muted:#8a7c6a;
+  --cream:#f7eee1;--paper:#fbf6ec;--bordo:#6e1f2c;--bordo-soft:#8c3140;
+  --olive:#7c855a;--olive-deep:#5a6240;--gold:#a8842f;--gold-light:#c7a565;
+  --ink:#3b2c25;--muted:#7a6b5e;
 }
 html,body{height:100%;overflow:hidden;}
 body{
@@ -22,65 +21,77 @@ body{
 body.intro-active .card>*:not(.frame){animation:none;opacity:0;}
 body.intro-active .floral{opacity:0;}
 
+/* Intro preloader */
 #intro{
-  position:fixed;inset:0;z-index:500;background:var(--cream);
+  position:fixed;inset:0;z-index:500;
+  background:var(--cream);
   display:flex;align-items:center;justify-content:center;
   transition:opacity 1s ease,visibility 1s;
 }
 #intro.hidden{opacity:0;visibility:hidden;pointer-events:none;}
 .intro-monogram{
   width:210px;height:210px;border-radius:50%;
-  border:1px solid rgba(176,143,62,.5);
+  border:1px solid rgba(168,132,47,.48);
   display:flex;align-items:center;justify-content:center;
   opacity:0;position:relative;
   animation:introIn .95s .5s cubic-bezier(.16,1,.3,1) forwards;
 }
 .intro-monogram::before{
   content:'';position:absolute;inset:9px;border-radius:50%;
-  border:1px solid rgba(176,143,62,.2);pointer-events:none;
+  border:1px solid rgba(168,132,47,.18);pointer-events:none;
 }
 .intro-monogram span{
   font-family:'Playfair Display',serif;font-style:italic;
   font-size:2.05rem;color:var(--bordo);letter-spacing:.14em;
 }
 .intro-monogram em{font-style:italic;color:var(--gold);}
-@keyframes introIn{from{opacity:0;transform:scale(.88);}to{opacity:1;transform:scale(1);}}
+@keyframes introIn{
+  from{opacity:0;transform:scale(.88);}
+  to{opacity:1;transform:scale(1);}
+}
 
-/* Corner florals — rebalanced, a touch more present for garden feel */
-.floral{position:fixed;pointer-events:none;mix-blend-mode:multiply;opacity:.26;z-index:1;transition:opacity 1.2s ease;}
+/* Corner florals */
+.floral{position:fixed;pointer-events:none;mix-blend-mode:multiply;opacity:.23;z-index:1;transition:opacity 1.2s ease;}
 .floral.tl{top:-8rem;left:-8rem;width:min(42vw,480px);transform:rotate(0deg);}
 .floral.tr{top:-6rem;right:-10rem;width:min(38vw,440px);transform:scaleX(-1);}
-.floral.bl{bottom:-10rem;left:-7rem;width:min(36vw,420px);transform:rotate(180deg);opacity:.13;}
+.floral.bl{bottom:-10rem;left:-7rem;width:min(36vw,420px);transform:rotate(180deg);}
 .floral.br{bottom:-8rem;right:-8rem;width:min(40vw,460px);transform:rotate(180deg) scaleX(-1);}
 
+/* Subtle background wash */
 body::before{
   content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
   background:
-    radial-gradient(ellipse 60% 50% at 14% 12%, rgba(134,144,101,.13), transparent),
-    radial-gradient(ellipse 55% 45% at 88% 86%, rgba(176,143,62,.10), transparent),
-    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(126,35,52,.03), transparent);
+    radial-gradient(ellipse 60% 50% at 15% 15%, rgba(124,133,90,.08), transparent),
+    radial-gradient(ellipse 60% 50% at 85% 85%, rgba(168,132,47,.07), transparent),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(110,31,44,.04), transparent);
 }
 
-.card{position:relative;z-index:10;text-align:center;padding:4rem 3rem;max-width:560px;width:90vw;}
+.card{
+  position:relative;z-index:10;text-align:center;padding:4rem 3rem;
+  max-width:560px;width:90vw;
+}
 
-.frame{position:absolute;inset:0;pointer-events:none;}
-.frame::before,.frame::after{content:'';position:absolute;border:1px solid var(--gold);opacity:.32;}
+/* Decorative frame */
+.frame{
+  position:absolute;inset:0;pointer-events:none;
+}
+.frame::before,.frame::after{
+  content:'';position:absolute;border:1px solid var(--gold);opacity:.35;
+}
 .frame::before{inset:0;border-radius:2px;}
 .frame::after{inset:10px;border-radius:2px;}
 
-/* Refined corner ticks */
-.corner{position:absolute;width:18px;height:18px;opacity:.55;}
+/* Corner ornaments on frame */
+.corner{position:absolute;width:28px;height:28px;opacity:.5;}
 .corner::before,.corner::after{content:'';position:absolute;background:var(--gold);}
-.corner::before{width:100%;height:1px;}
-.corner::after{width:1px;height:100%;}
-.corner.tl{top:18px;left:18px;} .corner.tl::before{top:0;left:0;} .corner.tl::after{top:0;left:0;}
-.corner.tr{top:18px;right:18px;} .corner.tr::before{top:0;right:0;} .corner.tr::after{top:0;right:0;}
-.corner.bl{bottom:18px;left:18px;} .corner.bl::before{bottom:0;left:0;} .corner.bl::after{bottom:0;left:0;}
-.corner.br{bottom:18px;right:18px;} .corner.br::before{bottom:0;right:0;} .corner.br::after{bottom:0;right:0;}
+.corner::before{width:100%;height:1px;top:50%;}
+.corner::after{width:1px;height:100%;left:50%;}
+.corner.tl{top:16px;left:16px;} .corner.tr{top:16px;right:16px;}
+.corner.bl{bottom:16px;left:16px;} .corner.br{bottom:16px;right:16px;}
 
 .kicker{
-  font-family:'Playfair Display',serif;font-style:italic;font-weight:500;
-  font-size:clamp(1.4rem,3.4vw,1.95rem);letter-spacing:.12em;
+  font-family:'Playfair Display',serif;font-style:italic;font-weight:400;
+  font-size:clamp(1.4rem,3.4vw,1.95rem);font-weight:500;letter-spacing:.12em;
   color:var(--bordo-soft);margin-bottom:2.4rem;
 }
 .names{
@@ -88,26 +99,28 @@ body::before{
   font-size:clamp(2.8rem,7vw,4.8rem);line-height:1;color:var(--bordo);
 }
 .amp{
-  display:block;font-family:'Playfair Display',serif;font-style:italic;font-weight:400;
-  font-size:clamp(1.8rem,4.2vw,2.9rem);color:var(--gold);margin:.9rem auto .5rem;
+  display:block;font-family:'Playfair Display',serif;font-style:italic;
+  font-weight:400;font-size:clamp(1.2rem,3vw,2rem);color:var(--gold);
+  margin:1.2rem auto 0.4rem;
 }
-.rule-wrap{display:flex;align-items:center;justify-content:center;gap:.8rem;margin:2rem auto 1.9rem;}
-.rule-wrap .line{width:38px;height:1px;background:var(--gold);opacity:.5;}
-.rule-wrap img{width:44px;height:auto;mix-blend-mode:multiply;opacity:.72;}
+.rule-wrap{display:flex;align-items:center;justify-content:center;gap:.8rem;margin:2rem auto;}
+.rule-wrap .line{width:38px;height:1px;background:var(--gold);opacity:.45;}
+.rule-wrap img{width:44px;height:auto;mix-blend-mode:multiply;opacity:.7;}
 .std{
   font-family:'Playfair Display',serif;font-style:italic;
-  font-size:clamp(.85rem,2vw,1.1rem);color:var(--olive-deep);
-  letter-spacing:.04em;margin-bottom:1.9rem;
+  font-size:clamp(.9rem,2.2vw,1.3rem);color:var(--bordo-soft);
+  letter-spacing:.06em;margin-bottom:1.8rem;
 }
 .date{
   font-family:'Libre Baskerville',serif;font-weight:400;
-  font-size:clamp(1.55rem,4vw,2.55rem);color:var(--bordo);
-  letter-spacing:.01em;margin-bottom:.95rem;
+  font-size:clamp(1.25rem,3.2vw,2.1rem);color:var(--bordo);margin-bottom:.6rem;
 }
 .venue{
-  font-size:.74rem;letter-spacing:.34em;text-transform:uppercase;color:#94835f;
+  font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
+  color:#8c7a62;
 }
 
+/* Animations */
 .card>*:not(.frame){opacity:0;transform:translateY(20px);animation:fadeUp .9s forwards;}
 .card>.kicker{animation-delay:.3s;}
 .card>.names{animation-delay:.5s;}
@@ -119,9 +132,6 @@ body::before{
 .card>.venue{animation-delay:1.4s;}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
 
-@media(min-width:501px){
-  .venue{font-size:.88rem;letter-spacing:.28em;}
-}
 @media(max-width:500px){
   .card{padding:3rem 2rem;}
   .floral.tl{top:-6rem;left:-6rem;width:260px;}
@@ -133,7 +143,11 @@ body::before{
 </head>
 <body>
 
-<div id="intro"><div class="intro-monogram"><span>P <em>&amp;</em> L</span></div></div>
+<div id="intro">
+  <div class="intro-monogram">
+    <span>P <em>&amp;</em> L</span>
+  </div>
+</div>
 
 <img class="floral tl" src="assets/1.svg" alt="">
 <img class="floral tr" src="assets/2.svg" alt="">
@@ -146,11 +160,11 @@ body::before{
     <div class="corner bl"></div><div class="corner br"></div>
   </div>
   <p class="kicker">Save the Date</p>
-  <div class="names">Patricija</div>
+  <div class="names" style="">Patricija</div>
   <div class="amp">&amp;</div>
   <div class="names">Lovro</div>
   <div class="rule-wrap"><span class="line"></span><img src="assets/5.svg" alt=""><span class="line"></span></div>
-  <p class="std">Proslavite s nama naš poseban dan</p>
+  <p class="std">Sačuvajte datum i proslavite s nama<br>naš poseban dan</p>
   <p class="date">24. travnja 2027.</p>
   <p class="venue">Zagreb</p>
 </div>
@@ -160,14 +174,19 @@ body::before{
   document.body.classList.add('intro-active');
   var intro = document.getElementById('intro');
   var imgs = document.querySelectorAll('img');
-  var loaded = 0, minReady = false, allLoaded = false;
+  var loaded = 0;
+  var minReady = false;
+  var allLoaded = false;
+
   function dismiss(){
     if(!minReady || !allLoaded) return;
     intro.classList.add('hidden');
     document.body.classList.remove('intro-active');
     setTimeout(function(){ intro.remove(); }, 1050);
   }
+
   setTimeout(function(){ minReady = true; dismiss(); }, 2100);
+
   function check(){ loaded++; if(loaded >= imgs.length){ allLoaded = true; dismiss(); } }
   imgs.forEach(function(img){
     if(img.complete) check();
