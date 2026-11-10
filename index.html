@@ -11,7 +11,7 @@
 @font-face{
   font-family:'Sloop Script One';
   src:url('assets/fonts/sloop-script-one.ttf') format('truetype');
-  font-weight:400; font-style:normal; font-display:swap;
+  font-weight:400; font-style:normal; font-display:block; /* no fallback flash in the intro monogram */
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 
@@ -77,11 +77,16 @@ body.intro-active{ overflow:hidden; }
   content:''; position:absolute; inset:9px; border-radius:50%;
   border:1px solid rgba(168,132,47,.18); pointer-events:none;
 }
-.intro-monogram span{
-  font-family:'Playfair Display',serif; font-style:italic;
-  font-size:2.05rem; color:var(--bordo); letter-spacing:.14em;
+/* "P & L" in Sloop: the P's bowl and the L's tail reach well past their
+   advance widths, so the & gets extra room on each side (more after the P),
+   and the whole mark shifts left/down to sit optically centred. */
+.intro-monogram span, nav .brand{
+  font-family:var(--script); font-style:normal; font-weight:400; line-height:1;
+  color:var(--bordo); letter-spacing:0; text-decoration:none;
+  display:inline-block; transform:translate(-.265em,.025em);
 }
-.intro-monogram em{ font-style:italic; color:var(--gold); }
+.intro-monogram span em, nav .brand em{ font-style:normal; color:var(--gold); margin:0 .18em 0 .24em; }
+.intro-monogram span{ font-size:3rem; }
 @keyframes introIn{
   from{ opacity:0; transform:scale(.88); }
   to{ opacity:1; transform:scale(1); }
@@ -94,8 +99,7 @@ nav{
   padding:1.2rem 2rem; transition:background .4s, box-shadow .4s, backdrop-filter .4s;
 }
 nav.scrolled{ background:rgba(247,238,225,.82); backdrop-filter:blur(10px); box-shadow:0 1px 0 rgba(110,31,44,.14); }
-nav .brand{ font-family:'Playfair Display',serif; font-style:italic; font-size:1.25rem; color:var(--bordo); letter-spacing:.06em; text-decoration:none; }
-nav .brand em{ font-style:italic; color:var(--gold); }
+nav .brand{ font-size:2rem; }
 
 /* ───────── HERO ───────── */
 .hero{
