@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Patricija &amp; Lovro — 24. travnja 2027.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 
@@ -23,10 +23,12 @@
   --gold-light:#c7a565;
   --ink:#3b2c25;
   --muted:#7a6b5e;
-  --script:'Great Vibes', cursive;
+  /* Names font: Sloop Script Pro once its web kit is linked; Pinyon Script until then */
+  --script:'sloop-script-pro','Sloop Script Pro','Pinyon Script', cursive;
+  --num:'Cormorant Garamond', serif;
 }
 
-html{ scroll-behavior:smooth; overflow-x:hidden; }
+html{ scroll-behavior:smooth; overflow-x:hidden; font-variant-numeric:lining-nums; }
 body{
   font-family:'Inter',sans-serif;
   background:var(--cream);
@@ -106,21 +108,21 @@ nav .brand em{ font-style:italic; color:var(--gold); }
 .hero-floral.br{ bottom:-5rem; right:-4.5rem; width:min(36vw,470px); transform:rotate(-12deg); animation-delay:2.05s; }
 @keyframes bloom{ from{opacity:0;} to{opacity:1;} }
 
-.hero .rings{ width:96px; height:auto; margin:0 auto 1.4rem; display:block; mix-blend-mode:multiply; opacity:0; animation:ringsRise 1.2s 1.9s forwards; }
+.hero .rings{ width:92px; height:auto; margin:0 auto 1.5rem; display:block; mix-blend-mode:multiply; opacity:0; animation:ringsRise 1.2s 1.9s forwards; }
 @keyframes ringsRise{ from{opacity:0; transform:translateY(34px);} to{opacity:.48; transform:translateY(0);} }
-.hero .pre{ font-size:.78rem; letter-spacing:.46em; text-indent:.46em; text-transform:uppercase; color:var(--bordo-soft); margin-bottom:1.6rem; opacity:0; animation:rise 1s 2.1s forwards; }
+.hero .pre{ font-size:.76rem; letter-spacing:.42em; text-indent:.42em; text-transform:uppercase; color:var(--bordo-soft); margin-bottom:2.6rem; opacity:0; animation:rise 1s 2.1s forwards; }
 
 /* Names — script, stacked like the invitation */
 .names{
   font-family:var(--script); font-weight:400; color:var(--bordo);
-  font-size:clamp(4.4rem,min(8vw,12vh),7.4rem); line-height:.95; letter-spacing:0;
+  font-size:clamp(4.2rem,min(7.6vw,11.5vh),7rem); line-height:1.08; letter-spacing:0;
   display:flex; flex-direction:column; align-items:center;
   opacity:0; animation:rise 1.1s 2.3s forwards;
 }
-.names .amp{ font-size:.62em; line-height:.9; color:var(--gold); margin:.05em 0 .02em .35em; }
-.names span:last-child{ margin-left:-.25em; }
+.names .amp{ font-family:'Playfair Display',serif; font-style:italic; font-size:.5em; line-height:1.1; color:var(--gold); margin:.04em 0 .06em .5em; }
+.names span:last-child{ margin-left:-.2em; }
 
-.hero .date{ margin-top:1.7rem; font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.15rem,2.5vw,1.65rem); color:var(--olive-deep); opacity:0; animation:rise 1s 2.55s forwards; }
+.hero .date{ margin-top:2.1rem; font-family:var(--num); font-weight:400; font-size:clamp(1.25rem,2.4vw,1.6rem); letter-spacing:.24em; text-indent:.24em; color:var(--olive-deep); opacity:0; animation:rise 1s 2.55s forwards; }
 .hero .btn{ margin-top:2.3rem; opacity:0; animation:rise 1s 2.75s forwards; }
 @keyframes rise{ from{opacity:0; transform:translateY(34px);} to{opacity:1; transform:translateY(0);} }
 
@@ -162,7 +164,7 @@ nav .brand em{ font-style:italic; color:var(--gold); }
 .heading .rule img{ width:22px; height:auto; mix-blend-mode:multiply; opacity:.7; }
 
 /* ───────── RASPORED — church left, venue right ───────── */
-.sched-sec{ padding:6rem 2rem 5rem; }
+.sched-sec{ padding:6rem 2rem 5.5rem; }
 .sched{
   max-width:820px; margin:0 auto;
   display:grid; grid-template-columns:1fr 1px 1fr; gap:0 3rem; align-items:start;
@@ -171,7 +173,7 @@ nav .brand em{ font-style:italic; color:var(--gold); }
 .ev{ text-align:center; display:flex; flex-direction:column; align-items:center; }
 .ev-icon{ width:62px; height:62px; color:var(--gold); margin-bottom:1rem; }
 .ev-icon svg{ width:100%; height:100%; display:block; }
-.ev-time{ font-family:'Playfair Display',serif; font-size:clamp(1.9rem,4vw,2.5rem); color:var(--bordo); line-height:1; letter-spacing:.02em; }
+.ev-time{ font-family:var(--num); font-weight:400; font-size:clamp(2.2rem,4.4vw,2.9rem); color:var(--bordo); line-height:1; letter-spacing:.04em; font-variant-numeric:lining-nums tabular-nums; }
 .ev-label{ font-size:.66rem; letter-spacing:.3em; text-indent:.3em; text-transform:uppercase; color:var(--olive-deep); margin:.7rem 0 1rem; }
 .ev h3{ font-family:'Playfair Display',serif; font-weight:500; font-size:1.25rem; line-height:1.3; color:var(--bordo); margin-bottom:.45rem; }
 .ev p{ font-weight:300; font-size:.9rem; line-height:1.6; color:var(--muted); }
@@ -183,49 +185,77 @@ nav .brand em{ font-style:italic; color:var(--gold); }
 .ev .map svg{ width:12px; height:12px; flex:none; }
 .ev .map:hover{ color:var(--bordo); border-color:var(--bordo); }
 
-/* ───────── RSVP — sits in the middle of the page ───────── */
-.rsvp{ padding:2rem 2rem 6rem; }
+/* ───────── COUNTDOWN — after the schedule, before RSVP ───────── */
+.cd-sec{ padding:2rem 2rem 5rem; text-align:center; }
+.cd-sec .title{ font-family:'Playfair Display',serif; font-style:italic; font-size:1.6rem; color:var(--bordo-soft); margin-bottom:2.2rem; }
+.cd-band{ max-width:660px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); position:relative; padding:2rem 0 1.8rem; }
+.cd-band::before, .cd-band::after{
+  content:''; position:absolute; left:0; right:0; height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold) 18%, var(--gold) 82%, transparent); opacity:.55;
+}
+.cd-band::before{ top:0; }
+.cd-band::after{ bottom:0; }
+.cd{ display:flex; flex-direction:column; align-items:center; position:relative; }
+.cd + .cd::before{ content:''; position:absolute; left:0; top:10%; bottom:10%; width:1px; background:rgba(168,132,47,.32); }
+.cd .n{
+  font-family:var(--num); font-weight:300; font-size:clamp(2.7rem,6vw,4.2rem); line-height:1; color:var(--bordo);
+  font-variant-numeric:lining-nums tabular-nums;
+}
+.cd .l{ font-size:.6rem; letter-spacing:.3em; text-indent:.3em; text-transform:uppercase; color:var(--olive-deep); margin-top:.8rem; }
+
+/* ───────── RSVP — card after the countdown ───────── */
+.rsvp{ padding:4.5rem 2rem 6rem; overflow:hidden; }
 .rsvp-card{
-  max-width:620px; margin:0 auto; text-align:center; position:relative;
-  background:rgba(251,246,236,.78); padding:3.6rem 2.6rem 3.4rem;
-  box-shadow:0 26px 60px -42px rgba(90,98,64,.75);
+  max-width:660px; margin:0 auto; text-align:center; position:relative;
+  background:var(--paper); padding:4rem 3rem 3.4rem;
+  box-shadow:0 30px 70px -48px rgba(90,98,64,.8);
 }
 .rsvp-card::before, .rsvp-card::after{ content:''; position:absolute; pointer-events:none; border:1px solid var(--gold); }
-.rsvp-card::before{ inset:0; opacity:.45; }
-.rsvp-card::after{ inset:7px; opacity:.2; }
-.rsvp-card h2{ font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(2.1rem,4.6vw,3rem); color:var(--bordo); line-height:1.1; margin-bottom:1rem; }
-.rsvp-card h2 em{ font-style:italic; color:var(--gold); }
-.rsvp-card p{ font-weight:300; font-size:1rem; line-height:1.65; color:var(--muted); margin-bottom:2.1rem; }
-.rsvp-card p strong{ font-weight:500; color:var(--bordo-soft); }
-.calls{ display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
-.call{
-  flex:1 1 220px; max-width:250px; display:flex; align-items:center; gap:.9rem; text-align:left;
-  padding:.95rem 1.2rem; border:1px solid rgba(110,31,44,.28); border-radius:2px;
-  text-decoration:none; color:var(--bordo); background:var(--paper);
-  transition:background .35s, color .35s, border-color .35s;
-}
-.call svg{ width:20px; height:20px; flex:none; color:var(--gold); transition:color .35s; }
-.call .who{ display:block; font-family:'Playfair Display',serif; font-style:italic; font-size:1.1rem; line-height:1.2; }
-.call .num{ display:block; font-size:.8rem; letter-spacing:.08em; color:var(--muted); margin-top:.15rem; transition:color .35s; }
-.call:hover{ background:var(--bordo); border-color:var(--bordo); color:var(--paper); }
-.call:hover svg, .call:hover .num{ color:var(--cream2); }
+.rsvp-card::before{ inset:0; opacity:.5; }
+.rsvp-card::after{ inset:7px; opacity:.22; }
+.rsvp-card .corner{ position:absolute; width:16px; height:16px; pointer-events:none; }
+.rsvp-card .corner::before, .rsvp-card .corner::after{ content:''; position:absolute; background:var(--gold); }
+.rsvp-card .corner::before{ width:100%; height:1px; }
+.rsvp-card .corner::after{ width:1px; height:100%; }
+.rsvp-card .corner.tl{ top:16px; left:16px; } .rsvp-card .corner.tl::before, .rsvp-card .corner.tl::after{ top:0; left:0; }
+.rsvp-card .corner.tr{ top:16px; right:16px; } .rsvp-card .corner.tr::before, .rsvp-card .corner.tr::after{ top:0; right:0; }
+.rsvp-card .corner.bl{ bottom:16px; left:16px; } .rsvp-card .corner.bl::before, .rsvp-card .corner.bl::after{ bottom:0; left:0; }
+.rsvp-card .corner.br{ bottom:16px; right:16px; } .rsvp-card .corner.br::before, .rsvp-card .corner.br::after{ bottom:0; right:0; }
+.rsvp-floral{ position:absolute; pointer-events:none; height:auto; z-index:2; }
+.rsvp-floral.tr{ top:-4.2rem; right:-3.6rem; width:190px; transform:rotate(-24deg); }
 
-/* ───────── COUNTDOWN — at the bottom ───────── */
-.cd-sec{ padding:4rem 2rem 5rem; text-align:center; }
-.cd-sec .title{ font-family:'Playfair Display',serif; font-style:italic; font-size:1.55rem; color:var(--bordo-soft); margin-bottom:2.6rem; }
-.cd-wrap{ display:flex; justify-content:center; gap:1.3rem; flex-wrap:wrap; }
-.cd{ position:relative; overflow:hidden; width:132px; padding:1.7rem .5rem; background:rgba(251,246,236,.66); border:1px solid rgba(124,133,90,.28); border-radius:6px; backdrop-filter:blur(4px); }
-.cd::after{ content:''; position:absolute; top:-30px; right:-30px; width:92px; height:92px; border-radius:50%; background:radial-gradient(circle at 32% 32%, rgba(168,132,47,.14), transparent 70%); pointer-events:none; }
-.cd .n{ font-family:'Playfair Display',serif; font-size:2.7rem; line-height:1; color:var(--bordo); }
-.cd .l{ font-size:.6rem; letter-spacing:.26em; text-transform:uppercase; color:var(--olive-deep); margin-top:.55rem; }
+.rsvp-kicker{ font-size:.66rem; letter-spacing:.5em; text-indent:.5em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; }
+.rsvp-card h2{ font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(2.2rem,4.6vw,3rem); color:var(--bordo); line-height:1.1; }
+.rsvp-card h2 em{ font-style:italic; color:var(--gold); }
+.rsvp-card .rule{ display:flex; align-items:center; justify-content:center; gap:.6rem; margin:1.2rem auto 1.5rem; }
+.rsvp-card .rule span{ display:block; width:34px; height:1px; background:var(--gold); opacity:.7; }
+.rsvp-card .rule img{ width:22px; height:auto; mix-blend-mode:multiply; opacity:.7; }
+.rsvp-note{ font-weight:300; font-size:.98rem; line-height:1.7; color:var(--muted); }
+.rsvp-note .by{ display:block; font-family:var(--num); font-weight:500; font-size:1.45rem; letter-spacing:.12em; color:var(--bordo); margin:.3rem 0 .2rem; }
+
+.contacts{ display:grid; grid-template-columns:1fr 1px 1fr; gap:0 2.4rem; margin-top:2.4rem; }
+.contacts-div{ background:linear-gradient(transparent, var(--gold) 20%, var(--gold) 80%, transparent); opacity:.5; }
+.contact{ display:flex; flex-direction:column; align-items:center; }
+.contact .who{ font-family:var(--script); font-size:2.9rem; line-height:1.2; color:var(--bordo); }
+.contact .tel{ font-family:var(--num); font-weight:500; font-size:1.3rem; letter-spacing:.1em; color:var(--ink); text-decoration:none; margin-top:.1rem; font-variant-numeric:lining-nums; }
+.contact .acts{ display:flex; gap:.5rem; margin-top:1.1rem; }
+.contact .acts a{
+  display:inline-flex; align-items:center; justify-content:center; gap:.45rem;
+  padding:.62rem 1rem; border-radius:999px; border:1px solid rgba(110,31,44,.32);
+  font-size:.6rem; letter-spacing:.2em; text-indent:.2em; text-transform:uppercase; font-weight:500;
+  color:var(--bordo); text-decoration:none; transition:background .3s, color .3s, border-color .3s;
+}
+.contact .acts a svg{ width:13px; height:13px; flex:none; }
+.contact .acts a.call{ background:var(--bordo); border-color:var(--bordo); color:var(--paper); }
+.contact .acts a:hover{ background:var(--bordo-deep); border-color:var(--bordo-deep); color:var(--paper); }
 
 /* ───────── FOOTER — closes with "Veselimo se vašem dolasku" ───────── */
 footer{ text-align:center; padding:2rem 2rem 4.5rem; position:relative; }
 footer .foot-floral{ width:min(46vw,250px); height:auto; display:block; margin:0 auto .4rem; }
 footer .fheart{ font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.5rem,3.4vw,2.1rem); color:var(--bordo-soft); line-height:1.3; }
 footer .fline{ width:46px; height:1px; background:var(--gold); margin:1.5rem auto 1.3rem; opacity:.7; }
-footer .fn{ font-family:var(--script); font-size:clamp(2.8rem,6vw,3.8rem); color:var(--bordo); line-height:1.05; }
-footer .fn .amp{ color:var(--gold); font-size:.8em; }
+footer .fn{ font-family:var(--script); font-size:clamp(3rem,6.4vw,4.2rem); color:var(--bordo); line-height:1.15; }
+footer .fn .amp{ font-family:'Playfair Display',serif; font-style:italic; color:var(--gold); font-size:.6em; margin:0 .15em; }
 footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-transform:uppercase; color:var(--muted); margin-top:.9rem; }
 
 /* ───────── RESPONSIVE ───────── */
@@ -235,10 +265,10 @@ footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-t
   .hero{ padding:5.6rem 1.15rem 3rem; }
   .hero-floral.tl{ top:-4.6rem; left:-3.6rem; width:min(58vw,300px); }
   .hero-floral.br{ bottom:-3.4rem; right:-3.6rem; width:min(56vw,290px); }
-  .hero .rings{ width:84px; margin-bottom:1.3rem; }
-  .hero .pre{ max-width:290px; text-wrap:balance; margin:0 auto 1.3rem; font-size:.66rem; letter-spacing:.28em; text-indent:.28em; line-height:1.75; }
-  .names{ font-size:clamp(4rem,19vw,5.4rem); }
-  .hero .date{ margin-top:1.3rem; font-size:1.18rem; }
+  .hero .rings{ width:80px; margin-bottom:1.4rem; }
+  .hero .pre{ max-width:290px; text-wrap:balance; margin:0 auto 2.2rem; font-size:.66rem; letter-spacing:.28em; text-indent:.28em; line-height:1.75; }
+  .names{ font-size:clamp(3.6rem,17vw,4.8rem); }
+  .hero .date{ margin-top:1.7rem; font-size:1.2rem; letter-spacing:.2em; text-indent:.2em; }
   .hero .btn{ margin-top:1.9rem; }
   .scroll-cue{ margin-top:1.7rem; }
   .scroll-cue .stem{ height:34px; }
@@ -252,25 +282,30 @@ footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-t
   .sched-sec{ padding:4.2rem .9rem 3.6rem; }
   .sched{ gap:0 1rem; }
   .ev-icon{ width:48px; height:48px; margin-bottom:.8rem; }
-  .ev-time{ font-size:1.75rem; }
+  .ev-time{ font-size:2.05rem; }
   .ev-label{ font-size:.56rem; letter-spacing:.22em; text-indent:.22em; margin:.55rem 0 .8rem; }
   .ev h3{ font-size:1.02rem; min-height:2.6em; display:flex; align-items:center; justify-content:center; }
   .ev p{ font-size:.8rem; line-height:1.55; }
   .ev .map{ font-size:.56rem; letter-spacing:.18em; text-indent:.18em; }
 
-  .rsvp{ padding:1rem 1.15rem 4.4rem; }
-  .rsvp-card{ padding:2.8rem 1.3rem 2.6rem; }
-  .rsvp-card h2{ font-size:2.15rem; }
-  .rsvp-card p{ font-size:.93rem; margin-bottom:1.7rem; }
-  .calls{ flex-direction:column; align-items:center; gap:.7rem; }
-  .call{ width:100%; max-width:290px; flex:none; }
+  .cd-sec{ padding:1.2rem 1rem 3.4rem; }
+  .cd-sec .title{ font-size:1.3rem; margin-bottom:1.6rem; }
+  .cd-band{ padding:1.5rem 0 1.35rem; }
+  .cd .n{ font-size:2.5rem; }
+  .cd .l{ font-size:.52rem; letter-spacing:.18em; text-indent:.18em; margin-top:.6rem; }
 
-  .cd-sec{ padding:3rem 1.1rem 4rem; }
-  .cd-sec .title{ font-size:1.28rem; margin-bottom:1.8rem; }
-  .cd-wrap{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; max-width:330px; margin:0 auto; }
-  .cd{ width:auto; padding:1.25rem .45rem; }
-  .cd .n{ font-size:2.25rem; }
-  .cd .l{ font-size:.55rem; letter-spacing:.2em; }
+  .rsvp{ padding:3.6rem 1.15rem 4.4rem; }
+  .rsvp-card{ padding:3.2rem 1.1rem 2.6rem; }
+  .rsvp-floral.tr{ top:-3.3rem; right:-2.9rem; width:135px; }
+  .rsvp-kicker{ font-size:.6rem; letter-spacing:.42em; text-indent:.42em; }
+  .rsvp-card h2{ font-size:2.15rem; }
+  .rsvp-note{ font-size:.9rem; }
+  .rsvp-note .by{ font-size:1.3rem; }
+  .contacts{ gap:0 .8rem; margin-top:2rem; }
+  .contact .who{ font-size:2.3rem; }
+  .contact .tel{ font-size:1.08rem; letter-spacing:.06em; }
+  .contact .acts{ flex-direction:column; width:100%; max-width:132px; gap:.45rem; margin-top:.95rem; }
+  .contact .acts a{ padding:.6rem .5rem; font-size:.56rem; letter-spacing:.16em; text-indent:.16em; }
 
   footer{ padding:1.5rem 1.1rem 4rem; }
 
@@ -370,7 +405,7 @@ footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-t
         <div class="ev-label">Proslava</div>
         <h3>Imanje Trajbar</h3>
         <p>Bana J. Jelačića 199<br>Zaprešić</p>
-        <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Imanje%20Trajbar%2C%20Ulica%20bana%20Josipa%20Jela%C4%8Di%C4%87a%20199%2C%20Zapre%C5%A1i%C4%87" target="_blank" rel="noopener">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Trajbar%20Team%2C%20Ulica%20bana%20Josipa%20Jela%C4%8Di%C4%87a%20199%2C%2010290%20Zapre%C5%A1i%C4%87" target="_blank" rel="noopener">
           <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M6 11s3.8-3.6 3.8-6.3A3.8 3.8 0 0 0 2.2 4.7C2.2 7.4 6 11 6 11z"/><circle cx="6" cy="4.7" r="1.3"/></svg>
           Karta
         </a>
@@ -378,30 +413,46 @@ footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-t
     </div>
   </section>
 
-  <section class="rsvp" id="rsvp">
-    <div class="rsvp-card" data-reveal="scale">
-      <h2>Potvrdite <em>dolazak</em></h2>
-      <p>Molimo potvrdite svoj dolazak do <strong>15. ožujka 2027.</strong><br>na jedan od brojeva:</p>
-      <div class="calls">
-        <a class="call" href="tel:+385997593958">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.2 3.5h3l1.6 4.1-2 1.3a11 11 0 0 0 5.3 5.3l1.3-2 4.1 1.6v3a1.8 1.8 0 0 1-1.9 1.8A15.6 15.6 0 0 1 3.4 5.4a1.8 1.8 0 0 1 1.8-1.9z"/></svg>
-          <span><span class="who">Patricija</span><span class="num">099 759 3958</span></span>
-        </a>
-        <a class="call" href="tel:+385995713133">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.2 3.5h3l1.6 4.1-2 1.3a11 11 0 0 0 5.3 5.3l1.3-2 4.1 1.6v3a1.8 1.8 0 0 1-1.9 1.8A15.6 15.6 0 0 1 3.4 5.4a1.8 1.8 0 0 1 1.8-1.9z"/></svg>
-          <span><span class="who">Lovro</span><span class="num">099 571 3133</span></span>
-        </a>
-      </div>
+  <section class="cd-sec" id="odbrojavanje">
+    <p class="title" data-reveal>Odbrojavamo do našeg „da"</p>
+    <div class="cd-band" data-reveal data-d=".1">
+      <div class="cd"><span class="n" id="days">---</span><span class="l">Dana</span></div>
+      <div class="cd"><span class="n" id="hours">--</span><span class="l">Sati</span></div>
+      <div class="cd"><span class="n" id="minutes">--</span><span class="l">Minuta</span></div>
+      <div class="cd"><span class="n" id="seconds">--</span><span class="l">Sekundi</span></div>
     </div>
   </section>
 
-  <section class="cd-sec">
-    <p class="title" data-reveal>Odbrojavamo do našeg „da"</p>
-    <div class="cd-wrap">
-      <div class="cd" data-reveal data-d="0"><div class="n" id="days">---</div><div class="l">Dana</div></div>
-      <div class="cd" data-reveal data-d=".08"><div class="n" id="hours">--</div><div class="l">Sati</div></div>
-      <div class="cd" data-reveal data-d=".16"><div class="n" id="minutes">--</div><div class="l">Minuta</div></div>
-      <div class="cd" data-reveal data-d=".24"><div class="n" id="seconds">--</div><div class="l">Sekundi</div></div>
+  <section class="rsvp" id="rsvp">
+    <div class="rsvp-card" data-reveal="scale">
+      <img class="rsvp-floral tr" src="assets/bouquet.webp" alt="">
+      <span class="corner tl"></span><span class="corner tr"></span>
+      <span class="corner bl"></span><span class="corner br"></span>
+
+      <p class="rsvp-kicker">R.S.V.P.</p>
+      <h2>Potvrdite <em>dolazak</em></h2>
+      <div class="rule"><span></span><img src="assets/5.svg" alt=""><span></span></div>
+      <p class="rsvp-note">Molimo potvrdite svoj dolazak do<span class="by">15. ožujka 2027.</span>na brojeve telefona:</p>
+
+      <div class="contacts">
+        <div class="contact">
+          <span class="who">Patricija</span>
+          <a class="tel" href="tel:+385997593958">099 759 3958</a>
+          <div class="acts">
+            <a class="call" href="tel:+385997593958"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.2 3.5h3l1.6 4.1-2 1.3a11 11 0 0 0 5.3 5.3l1.3-2 4.1 1.6v3a1.8 1.8 0 0 1-1.9 1.8A15.6 15.6 0 0 1 3.4 5.4a1.8 1.8 0 0 1 1.8-1.9z"/></svg>Nazovi</a>
+            <a href="sms:+385997593958"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10.5H9.5L5 19.5V16H4z"/></svg>Poruka</a>
+          </div>
+        </div>
+        <div class="contacts-div" aria-hidden="true"></div>
+        <div class="contact">
+          <span class="who">Lovro</span>
+          <a class="tel" href="tel:+385995713133">099 571 3133</a>
+          <div class="acts">
+            <a class="call" href="tel:+385995713133"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.2 3.5h3l1.6 4.1-2 1.3a11 11 0 0 0 5.3 5.3l1.3-2 4.1 1.6v3a1.8 1.8 0 0 1-1.9 1.8A15.6 15.6 0 0 1 3.4 5.4a1.8 1.8 0 0 1 1.8-1.9z"/></svg>Nazovi</a>
+            <a href="sms:+385995713133"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10.5H9.5L5 19.5V16H4z"/></svg>Poruka</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
