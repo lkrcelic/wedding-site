@@ -37,7 +37,7 @@ body{
   position:relative;
 }
 body::before{
-  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  content:''; position:fixed; inset:0; z-index:-2; pointer-events:none;
   background:
     radial-gradient(70% 50% at 12% 6%, rgba(124,133,90,.10), transparent 60%),
     radial-gradient(60% 45% at 88% 22%, rgba(110,31,44,.07), transparent 60%),
@@ -100,12 +100,14 @@ nav .brand em{ font-style:italic; color:var(--gold); }
 .hero-inner{ position:relative; z-index:1; width:100%; display:flex; flex-direction:column; align-items:center; }
 
 /* ───────── TWO BOUQUETS FIXED TO THE SCREEN CORNERS ─────────
-   They stay where they are while the page scrolls over them. */
+   The very back layer (only the paper gradient is behind it): every bit of
+   content, the card and footer flowers included, sits in front. Softly
+   blurred and toned down so they read as background. */
 .flora{
-  position:fixed; inset:0; z-index:1; pointer-events:none; overflow:hidden;
+  position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden;
   opacity:0; animation:bloom 1.8s 1.8s ease forwards;
 }
-.flora .fl{ position:absolute; height:auto; transition:opacity .6s ease; }
+.flora .fl{ position:absolute; height:auto; opacity:.82; filter:blur(2.5px); transition:opacity .6s ease; }
 .fl.f1{ top:-9rem; left:-5rem; width:min(36vw,470px); transform:rotate(172deg); }
 .fl.f2{ bottom:-5rem; right:-4.5rem; width:min(36vw,470px); transform:rotate(-12deg); }
 @keyframes bloom{ from{opacity:0;} to{opacity:1;} }
@@ -124,7 +126,12 @@ nav .brand em{ font-style:italic; color:var(--gold); }
 .names .amp{ font-family:'Playfair Display',serif; font-style:italic; font-size:.5em; line-height:1.1; color:var(--gold); margin:.04em 0 .06em .5em; }
 .names span:last-child{ margin-left:-.2em; }
 
-.hero .date{ margin-top:2.1rem; font-family:var(--num); font-weight:400; font-size:clamp(1.25rem,2.4vw,1.6rem); letter-spacing:.24em; text-indent:.24em; color:var(--olive-deep); opacity:0; animation:rise 1s 2.55s forwards; }
+.hero .date{
+  margin-top:2rem; display:flex; align-items:center; justify-content:center; gap:1rem;
+  font-family:'Playfair Display',serif; font-style:italic; font-weight:400; font-size:clamp(1.35rem,2.4vw,1.7rem);
+  letter-spacing:.02em; color:var(--olive-deep); opacity:0; animation:rise 1s 2.55s forwards;
+}
+.hero .date::before, .hero .date::after{ content:''; width:40px; height:1px; background:var(--gold); opacity:.6; }
 .hero .btn{ margin-top:2.3rem; opacity:0; animation:rise 1s 2.75s forwards; }
 @keyframes rise{ from{opacity:0; transform:translateY(34px);} to{opacity:1; transform:translateY(0);} }
 
@@ -249,8 +256,7 @@ nav .brand em{ font-style:italic; color:var(--gold); }
 .contact .acts a svg{ width:13px; height:13px; flex:none; }
 .contact .acts a.call{ background:var(--bordo); border-color:var(--bordo); color:var(--paper); }
 .contact .acts a:hover{ background:var(--bordo-deep); border-color:var(--bordo-deep); color:var(--paper); }
-.contact .acts a.wa svg{ width:14px; height:14px; color:#1f9e54; transition:color .3s; }
-.contact .acts a.wa:hover svg{ color:var(--paper); }
+.contact .acts a.wa svg{ width:14px; height:14px; }
 
 /* ───────── FOOTER — closes with "Veselimo se vašem dolasku" ───────── */
 footer{ text-align:center; padding:2rem 2rem 4.5rem; position:relative; }
@@ -269,11 +275,13 @@ footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-t
   .fl.f1{ top:-4.6rem; left:-3.6rem; width:min(58vw,300px); }
   .fl.f2{ bottom:-3.4rem; right:-3.6rem; width:min(56vw,290px); }
   /* On a phone the text scrolls right over the corners, so the bouquets soften past the hero */
+  .flora .fl{ filter:blur(1.5px); }
   .flora.soft .fl{ opacity:.5; }
   .hero .rings{ width:80px; margin-bottom:1.4rem; }
   .hero .pre{ max-width:290px; text-wrap:balance; margin:0 auto 2.2rem; font-size:.66rem; letter-spacing:.28em; text-indent:.28em; line-height:1.75; }
   .names{ font-size:clamp(3.6rem,17vw,4.8rem); }
-  .hero .date{ margin-top:1.7rem; font-size:1.2rem; letter-spacing:.2em; text-indent:.2em; }
+  .hero .date{ margin-top:1.6rem; font-size:1.32rem; gap:.8rem; }
+  .hero .date::before, .hero .date::after{ width:28px; }
   .hero .btn{ margin-top:1.9rem; }
   .scroll-cue{ margin-top:1.7rem; }
   .scroll-cue .stem{ height:34px; }
