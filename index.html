@@ -4,9 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Patricija &amp; Lovro — 24. travnja 2027.</title>
+<link rel="preload" href="assets/fonts/sloop-script-one.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+@font-face{
+  font-family:'Sloop Script One';
+  src:url('assets/fonts/sloop-script-one.ttf') format('truetype');
+  font-weight:400; font-style:normal; font-display:swap;
+}
 * { margin:0; padding:0; box-sizing:border-box; }
 
 :root{
@@ -23,8 +29,8 @@
   --gold-light:#c7a565;
   --ink:#3b2c25;
   --muted:#7a6b5e;
-  /* Names font: Sloop Script Pro once its web kit is linked; Pinyon Script until then */
-  --script:'sloop-script-pro','Sloop Script Pro','Pinyon Script', cursive;
+  /* Names font: Sloop Script One (self-hosted, assets/fonts), Pinyon Script as fallback */
+  --script:'Sloop Script One','Pinyon Script', cursive;
   --num:'Cormorant Garamond', serif;
 }
 
@@ -116,15 +122,20 @@ nav .brand em{ font-style:italic; color:var(--gold); }
 @keyframes ringsRise{ from{opacity:0; transform:translateY(14px);} to{opacity:.48; transform:translateY(0);} }
 .hero .pre{ font-size:.76rem; letter-spacing:.42em; text-indent:.42em; text-transform:uppercase; color:var(--bordo-soft); margin-bottom:2.6rem; opacity:0; animation:rise 1s 2.1s forwards; }
 
-/* Names — script, stacked like the invitation */
+/* Names — script, stacked like the invitation.
+   Proportions taken from the printed design (in names-em): baselines
+   Patricija → & 1.0, & → Lovro .84; the & sits a touch left of centre,
+   under "tric", so the loop of the j sweeps past it with air to spare;
+   Lovro sits a little left of centre too. */
 .names{
   font-family:var(--script); font-weight:400; color:var(--bordo);
-  font-size:clamp(4.2rem,min(7.6vw,11.5vh),7rem); line-height:1.08; letter-spacing:0;
+  font-size:clamp(4.8rem,min(9vw,12.2vh),8.2rem); line-height:1; letter-spacing:0;
   display:flex; flex-direction:column; align-items:center;
   opacity:0; animation:rise 1.1s 2.3s forwards;
 }
-.names .amp{ font-family:'Playfair Display',serif; font-style:italic; font-size:.5em; line-height:1.1; color:var(--gold); margin:.04em 0 .06em .5em; }
-.names span:last-child{ margin-left:-.2em; }
+.names span{ display:block; }
+.names .amp{ font-size:.9em; line-height:1; color:var(--gold); margin:.08em .18em 0 0; }
+.names span:last-child{ margin:-.13em 0 0 -.2em; }
 
 .hero .date{
   margin-top:2rem; display:flex; align-items:center; justify-content:center; gap:1rem;
@@ -246,8 +257,8 @@ nav .brand em{ font-style:italic; color:var(--gold); }
 .contacts{ display:grid; grid-template-columns:1fr 1px 1fr; gap:0 2.4rem; margin-top:2.4rem; }
 .contacts-div{ background:linear-gradient(transparent, var(--gold) 20%, var(--gold) 80%, transparent); opacity:.5; }
 .contact{ display:flex; flex-direction:column; align-items:center; }
-.contact .who{ font-family:var(--script); font-size:2.9rem; line-height:1.2; color:var(--bordo); }
-.contact .tel{ font-family:var(--num); font-weight:500; font-size:1.3rem; letter-spacing:.1em; color:var(--ink); text-decoration:none; margin-top:.1rem; font-variant-numeric:lining-nums; }
+.contact .who{ font-family:var(--script); font-size:3.4rem; line-height:1.15; color:var(--bordo); }
+.contact .tel{ font-family:var(--num); font-weight:500; font-size:1.3rem; letter-spacing:.1em; color:var(--ink); text-decoration:none; margin-top:.5rem; font-variant-numeric:lining-nums; }
 .contact .acts{ display:flex; gap:.5rem; margin-top:1.1rem; }
 .contact .acts a{
   display:inline-flex; align-items:center; justify-content:center; gap:.45rem;
@@ -264,9 +275,9 @@ nav .brand em{ font-style:italic; color:var(--gold); }
 footer{ text-align:center; padding:10rem 2rem 4.5rem; position:relative; }
 footer .fheart{ font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.5rem,3.4vw,2.1rem); color:var(--bordo-soft); line-height:1.3; }
 footer .fline{ width:46px; height:1px; background:var(--gold); margin:1.5rem auto 1.3rem; opacity:.7; }
-footer .fn{ font-family:var(--script); font-size:clamp(3rem,6.4vw,4.2rem); color:var(--bordo); line-height:1.15; }
-footer .fn .amp{ font-family:'Playfair Display',serif; font-style:italic; color:var(--gold); font-size:.6em; margin:0 .15em; }
-footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-transform:uppercase; color:var(--muted); margin-top:.9rem; }
+footer .fn{ font-family:var(--script); font-size:clamp(3.6rem,7.6vw,5rem); color:var(--bordo); line-height:1.15; }
+footer .fn .amp{ color:var(--gold); font-size:.8em; margin:0 .12em; }
+footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-transform:uppercase; color:var(--muted); margin-top:1.2rem; }
 
 /* ───────── RESPONSIVE ───────── */
 @media(max-width:760px){
@@ -274,11 +285,11 @@ footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-t
 
   .hero{ padding:5.6rem 1.15rem 3rem; }
   .fl.f1{ top:-4.6rem; left:-3.6rem; width:min(58vw,300px); }
-  .fl.f2{ bottom:-3.4rem; right:-3.6rem; width:min(56vw,290px); }
+  .fl.f2{ bottom:-4.8rem; right:-4.6rem; width:min(54vw,285px); }
   .hero .rings{ width:80px; margin-bottom:1.4rem; }
   .hero .pre{ max-width:290px; text-wrap:balance; margin:0 auto 2.2rem; font-size:.66rem; letter-spacing:.28em; text-indent:.28em; line-height:1.75; }
-  .names{ font-size:clamp(3.6rem,17vw,4.8rem); }
-  .hero .date{ margin-top:1.6rem; font-size:1.32rem; gap:.8rem; }
+  .names{ font-size:clamp(4.4rem,22vw,6rem); }
+  .hero .date{ margin-top:1.9rem; font-size:1.32rem; gap:.8rem; }
   .hero .date::before, .hero .date::after{ width:28px; }
   .hero .btn{ margin-top:1.9rem; }
   .scroll-cue{ margin-top:1.7rem; }
@@ -312,18 +323,18 @@ footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-t
   .rsvp-note{ font-size:.9rem; }
   .rsvp-note .by{ font-size:1.3rem; }
   .contacts{ gap:0 .8rem; margin-top:2rem; }
-  .contact .who{ font-size:2.3rem; }
+  .contact .who{ font-size:2.75rem; }
   .contact .tel{ font-size:1.08rem; letter-spacing:.06em; }
   .contact .acts{ flex-direction:column; width:100%; max-width:132px; gap:.45rem; margin-top:.95rem; }
   .contact .acts a{ padding:.6rem .5rem; font-size:.56rem; letter-spacing:.16em; text-indent:.16em; }
 
   footer{ padding:7.5rem 1.1rem 4rem; }
+  footer .fn{ font-size:min(14vw,3.6rem); }
 
   [data-reveal="left"], [data-reveal="right"]{ transform:translateY(14px); }
 }
 
 @media(max-width:370px){
-  .names{ font-size:3.7rem; }
   .ev h3{ font-size:.95rem; }
   .ev p{ font-size:.74rem; }
 }
