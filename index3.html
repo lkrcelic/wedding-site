@@ -101,13 +101,13 @@ nav .brand em{ font-style:italic; color:var(--gold); }
 
 /* ───────── TWO BOUQUETS ON THE FIRST SCREEN ONLY ─────────
    They sit in the hero corners and scroll away with it. They are the back
-   layer (z-index -1): all content sits in front of them. Softly blurred and
-   toned down so they read as background. */
+   layer (z-index -1): all content sits in front of them. Slightly toned
+   down so they read as background. */
 .flora{
   position:absolute; inset:0; z-index:-1; pointer-events:none; overflow:hidden;
   opacity:0; animation:bloom 1.8s 1.8s ease forwards;
 }
-.flora .fl{ position:absolute; height:auto; opacity:.82; filter:blur(2.5px); transition:opacity .6s ease; }
+.flora .fl{ position:absolute; height:auto; opacity:.82; }
 .fl.f1{ top:-9rem; left:-5rem; width:min(36vw,470px); transform:rotate(172deg); }
 .fl.f2{ bottom:-5rem; right:-4.5rem; width:min(36vw,470px); transform:rotate(-12deg); }
 @keyframes bloom{ from{opacity:0;} to{opacity:1;} }
@@ -275,7 +275,6 @@ footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-t
   .hero{ padding:5.6rem 1.15rem 3rem; }
   .fl.f1{ top:-4.6rem; left:-3.6rem; width:min(58vw,300px); }
   .fl.f2{ bottom:-3.4rem; right:-3.6rem; width:min(56vw,290px); }
-  .flora .fl{ filter:blur(1.5px); }
   .hero .rings{ width:80px; margin-bottom:1.4rem; }
   .hero .pre{ max-width:290px; text-wrap:balance; margin:0 auto 2.2rem; font-size:.66rem; letter-spacing:.28em; text-indent:.28em; line-height:1.75; }
   .names{ font-size:clamp(3.6rem,17vw,4.8rem); }
