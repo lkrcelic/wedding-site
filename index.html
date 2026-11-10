@@ -6,7 +6,7 @@
 <title>Patricija &amp; Lovro — 24. travnja 2027.</title>
 <link rel="preload" href="assets/fonts/sloop-script-one.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 @font-face{
   font-family:'Sloop Script One';
@@ -255,8 +255,17 @@ nav .brand{ font-size:2rem; }
 .rsvp-card .rule{ display:flex; align-items:center; justify-content:center; gap:.6rem; margin:1.2rem auto 1.5rem; }
 .rsvp-card .rule span{ display:block; width:34px; height:1px; background:var(--gold); opacity:.7; }
 .rsvp-card .rule img{ width:22px; height:auto; mix-blend-mode:multiply; opacity:.7; }
-.rsvp-note{ font-weight:300; font-size:.98rem; line-height:1.7; color:var(--muted); }
-.rsvp-note .by{ display:block; font-family:var(--num); font-weight:500; font-size:1.45rem; letter-spacing:.12em; color:var(--bordo); margin:.3rem 0 .2rem; }
+/* RSVP note: one italic serif sentence (the deadline in the same font,
+   only a touch of bordo), then a small spaced label */
+.rsvp-note{ margin:0 auto; }
+.rsvp-note .lead, .rsvp-note .by{
+  font-family:var(--num); font-style:italic; font-weight:400;
+  font-size:1.42rem; line-height:1.35; color:#5e4b41; letter-spacing:.005em;
+}
+.rsvp-note .by{ margin:.05rem 0 1.05rem; }
+.rsvp-note .via{
+  font-size:.62rem; font-weight:500; letter-spacing:.34em; text-indent:.34em; text-transform:uppercase; color:var(--gold);
+}
 
 .contacts{ display:grid; grid-template-columns:1fr 1px 1fr; gap:0 2.4rem; margin-top:2.4rem; }
 .contacts-div{ background:linear-gradient(transparent, var(--gold) 20%, var(--gold) 80%, transparent); opacity:.5; }
@@ -277,11 +286,11 @@ nav .brand{ font-size:2rem; }
 
 /* ───────── FOOTER — closes with "Veselimo se vašem dolasku" ───────── */
 footer{ text-align:center; padding:10rem 2rem 4.5rem; position:relative; }
-footer .fheart{ font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.5rem,3.4vw,2.1rem); color:var(--bordo-soft); line-height:1.3; }
+footer .fheart{ font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.5rem,3.4vw,2.1rem); color:var(--bordo-soft); line-height:1.3; padding-right:.12em; /* italic leans right */ }
 footer .fline{ width:46px; height:1px; background:var(--gold); margin:1.5rem auto 1.3rem; opacity:.7; }
-footer .fn{ font-family:var(--script); font-size:clamp(3.6rem,7.6vw,5rem); color:var(--bordo); line-height:1.15; }
+footer .fn{ font-family:var(--script); font-size:clamp(3.6rem,7.6vw,5rem); color:var(--bordo); line-height:1.15; padding-left:.06em; /* optical centre: the P swash reaches left */ }
 footer .fn .amp{ color:var(--gold); font-size:.8em; margin:0 .12em; }
-footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-transform:uppercase; color:var(--muted); margin-top:1.2rem; }
+footer .fmeta{ font-size:.92rem; font-weight:500; letter-spacing:.3em; margin-right:-.3em; text-transform:uppercase; color:var(--olive-deep); margin-top:1.2rem; }
 
 /* ───────── RESPONSIVE ───────── */
 @media(max-width:760px){
@@ -324,8 +333,9 @@ footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-t
   .rsvp-card{ padding:3.2rem 1.1rem 2.6rem; }
   .rsvp-floral.tr{ top:-3.3rem; right:-2.9rem; width:135px; }
   .rsvp-card h2{ font-size:2.15rem; }
-  .rsvp-note{ font-size:.9rem; }
-  .rsvp-note .by{ font-size:1.3rem; }
+  .rsvp-note .lead, .rsvp-note .by{ font-size:1.28rem; }
+  .rsvp-note .by{ margin-bottom:.95rem; }
+  .rsvp-note .via{ font-size:.58rem; letter-spacing:.28em; text-indent:.28em; }
   .contacts{ gap:0 .8rem; margin-top:2rem; }
   .contact .who{ font-size:2.75rem; }
   .contact .tel{ font-size:1.08rem; letter-spacing:.06em; }
@@ -458,7 +468,11 @@ footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-t
 
       <h2>Potvrdite <em>dolazak</em></h2>
       <div class="rule"><span></span><img src="assets/5.svg" alt=""><span></span></div>
-      <p class="rsvp-note">Molimo potvrdite svoj dolazak do<span class="by">15. ožujka 2027.</span>na brojeve telefona:</p>
+      <div class="rsvp-note">
+        <p class="lead">Molimo potvrdite svoj dolazak do</p>
+        <p class="by">15. ožujka 2027.</p>
+        <p class="via">na brojeve telefona</p>
+      </div>
 
       <div class="contacts">
         <div class="contact">
@@ -486,7 +500,7 @@ footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-t
     <p class="fheart" data-reveal data-d=".05">Veselimo se vašem dolasku!</p>
     <div class="fline" data-reveal data-d=".1"></div>
     <div class="fn" data-reveal data-d=".15">Patricija <span class="amp">&amp;</span> Lovro</div>
-    <p class="fmeta" data-reveal data-d=".2">24. 4. 2027.</p>
+    <p class="fmeta" data-reveal data-d=".2">24.4.2027.</p>
   </footer>
 
 </div>
