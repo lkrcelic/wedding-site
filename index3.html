@@ -99,12 +99,12 @@ nav .brand em{ font-style:italic; color:var(--gold); }
 }
 .hero-inner{ position:relative; z-index:1; width:100%; display:flex; flex-direction:column; align-items:center; }
 
-/* ───────── TWO BOUQUETS FIXED TO THE SCREEN CORNERS ─────────
-   The very back layer (only the paper gradient is behind it): every bit of
-   content, the card and footer flowers included, sits in front. Softly
-   blurred and toned down so they read as background. */
+/* ───────── TWO BOUQUETS ON THE FIRST SCREEN ONLY ─────────
+   They sit in the hero corners and scroll away with it. They are the back
+   layer (z-index -1): all content sits in front of them. Softly blurred and
+   toned down so they read as background. */
 .flora{
-  position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden;
+  position:absolute; inset:0; z-index:-1; pointer-events:none; overflow:hidden;
   opacity:0; animation:bloom 1.8s 1.8s ease forwards;
 }
 .flora .fl{ position:absolute; height:auto; opacity:.82; filter:blur(2.5px); transition:opacity .6s ease; }
@@ -113,7 +113,7 @@ nav .brand em{ font-style:italic; color:var(--gold); }
 @keyframes bloom{ from{opacity:0;} to{opacity:1;} }
 
 .hero .rings{ width:92px; height:auto; margin:0 auto 1.5rem; display:block; mix-blend-mode:multiply; opacity:0; animation:ringsRise 1.2s 1.9s forwards; }
-@keyframes ringsRise{ from{opacity:0; transform:translateY(34px);} to{opacity:.48; transform:translateY(0);} }
+@keyframes ringsRise{ from{opacity:0; transform:translateY(14px);} to{opacity:.48; transform:translateY(0);} }
 .hero .pre{ font-size:.76rem; letter-spacing:.42em; text-indent:.42em; text-transform:uppercase; color:var(--bordo-soft); margin-bottom:2.6rem; opacity:0; animation:rise 1s 2.1s forwards; }
 
 /* Names — script, stacked like the invitation */
@@ -133,9 +133,11 @@ nav .brand em{ font-style:italic; color:var(--gold); }
 }
 .hero .date::before, .hero .date::after{ content:''; width:40px; height:1px; background:var(--gold); opacity:.6; }
 .hero .btn{ margin-top:2.3rem; opacity:0; animation:rise 1s 2.75s forwards; }
-@keyframes rise{ from{opacity:0; transform:translateY(34px);} to{opacity:1; transform:translateY(0);} }
+@keyframes rise{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
 
 .scroll-cue{ margin-top:2.1rem; display:flex; flex-direction:column; align-items:center; gap:.55rem; text-decoration:none; opacity:0; animation:rise 1s 3s forwards; }
+/* Hero entrance: slower and softer than the default ease */
+.hero .rings, .hero .pre, .names, .hero .date, .hero .btn, .scroll-cue{ animation-duration:1.6s; animation-timing-function:cubic-bezier(.22,.61,.36,1); }
 .scroll-cue span{ font-size:.62rem; letter-spacing:.32em; text-indent:.32em; text-transform:uppercase; color:var(--muted); }
 .scroll-cue .stem{ width:1px; height:42px; background:rgba(110,31,44,.4); position:relative; overflow:hidden; }
 .scroll-cue .stem::after{ content:''; position:absolute; top:0; left:0; width:100%; height:42%; background:var(--bordo); animation:drip 1.9s ease-in-out infinite; }
@@ -152,15 +154,15 @@ nav .brand em{ font-style:italic; color:var(--gold); }
 .btn::after{ content:''; position:absolute; inset:0; background:var(--bordo-deep); transform:translateX(-101%); transition:transform .45s cubic-bezier(.16,1,.3,1); }
 .btn:hover::after{ transform:translateX(0); }
 
-/* ───────── REVEAL SYSTEM ───────── */
+/* ───────── REVEAL SYSTEM — gentle: short travel, slow soft ease ───────── */
 [data-reveal]{
-  opacity:0; transform:translateY(38px);
-  transition:opacity 1s cubic-bezier(.16,1,.3,1), transform 1.05s cubic-bezier(.16,1,.3,1), filter 1s ease;
+  opacity:0; transform:translateY(14px);
+  transition:opacity 1.4s cubic-bezier(.25,.1,.25,1), transform 1.6s cubic-bezier(.22,.61,.36,1), filter 1.4s ease;
   will-change:opacity, transform;
 }
-[data-reveal="left"]{ transform:translateX(-52px); }
-[data-reveal="right"]{ transform:translateX(52px); }
-[data-reveal="scale"]{ transform:scale(.9); }
+[data-reveal="left"]{ transform:translateX(-18px); }
+[data-reveal="right"]{ transform:translateX(18px); }
+[data-reveal="scale"]{ transform:scale(.975); }
 [data-reveal].in{ opacity:1; transform:none; filter:none; }
 
 /* HEADING */
@@ -259,8 +261,7 @@ nav .brand em{ font-style:italic; color:var(--gold); }
 .contact .acts a.wa svg{ width:14px; height:14px; }
 
 /* ───────── FOOTER — closes with "Veselimo se vašem dolasku" ───────── */
-footer{ text-align:center; padding:2rem 2rem 4.5rem; position:relative; }
-footer .foot-floral{ width:min(46vw,250px); height:auto; display:block; margin:0 auto .4rem; }
+footer{ text-align:center; padding:10rem 2rem 4.5rem; position:relative; }
 footer .fheart{ font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.5rem,3.4vw,2.1rem); color:var(--bordo-soft); line-height:1.3; }
 footer .fline{ width:46px; height:1px; background:var(--gold); margin:1.5rem auto 1.3rem; opacity:.7; }
 footer .fn{ font-family:var(--script); font-size:clamp(3rem,6.4vw,4.2rem); color:var(--bordo); line-height:1.15; }
@@ -274,9 +275,7 @@ footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-t
   .hero{ padding:5.6rem 1.15rem 3rem; }
   .fl.f1{ top:-4.6rem; left:-3.6rem; width:min(58vw,300px); }
   .fl.f2{ bottom:-3.4rem; right:-3.6rem; width:min(56vw,290px); }
-  /* On a phone the text scrolls right over the corners, so the bouquets soften past the hero */
   .flora .fl{ filter:blur(1.5px); }
-  .flora.soft .fl{ opacity:.5; }
   .hero .rings{ width:80px; margin-bottom:1.4rem; }
   .hero .pre{ max-width:290px; text-wrap:balance; margin:0 auto 2.2rem; font-size:.66rem; letter-spacing:.28em; text-indent:.28em; line-height:1.75; }
   .names{ font-size:clamp(3.6rem,17vw,4.8rem); }
@@ -319,9 +318,9 @@ footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-t
   .contact .acts{ flex-direction:column; width:100%; max-width:132px; gap:.45rem; margin-top:.95rem; }
   .contact .acts a{ padding:.6rem .5rem; font-size:.56rem; letter-spacing:.16em; text-indent:.16em; }
 
-  footer{ padding:1.5rem 1.1rem 4rem; }
+  footer{ padding:7.5rem 1.1rem 4rem; }
 
-  [data-reveal="left"], [data-reveal="right"]{ transform:translateY(32px); }
+  [data-reveal="left"], [data-reveal="right"]{ transform:translateY(14px); }
 }
 
 @media(max-width:370px){
@@ -344,12 +343,6 @@ footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-t
   </div>
 </div>
 
-<!-- ════════ FLOWERS (fixed while you scroll) ════════ -->
-<div class="flora" aria-hidden="true">
-  <img class="fl f1" src="assets/bouquet.webp" alt="">
-  <img class="fl f2" src="assets/bouquet.webp" alt="">
-</div>
-
 <!-- ════════ CONTENT ════════ -->
 <div class="content">
 
@@ -358,6 +351,10 @@ footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-t
   </nav>
 
   <section class="hero" id="top">
+    <div class="flora" aria-hidden="true">
+      <img class="fl f1" src="assets/bouquet.webp" alt="">
+      <img class="fl f2" src="assets/bouquet.webp" alt="">
+    </div>
     <div class="hero-inner">
       <img class="rings" src="assets/5.svg" alt="Vjenčano prstenje">
       <p class="pre">Pozivamo vas na naše vjenčanje</p>
@@ -472,7 +469,6 @@ footer .fmeta{ font-size:.68rem; letter-spacing:.34em; text-indent:.34em; text-t
   </section>
 
   <footer id="kraj">
-    <img class="foot-floral" src="assets/bouquet.webp" alt="" data-reveal="scale">
     <p class="fheart" data-reveal data-d=".05">Veselimo se vašem dolasku!</p>
     <div class="fline" data-reveal data-d=".1"></div>
     <div class="fn" data-reveal data-d=".15">Patricija <span class="amp">&amp;</span> Lovro</div>
@@ -529,15 +525,6 @@ if('IntersectionObserver' in window){
 }else{
   document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('in'));
 }
-
-/* Fixed bouquets: mark when the hero is scrolled past (phones soften them then) */
-(function(){
-  var layer = document.querySelector('.flora');
-  if(!layer) return;
-  function update(){ layer.classList.toggle('soft', window.scrollY > window.innerHeight * .45); }
-  update();
-  addEventListener('scroll', update, { passive:true });
-})();
 
 /* Nav background on scroll */
 addEventListener('scroll',()=>{
